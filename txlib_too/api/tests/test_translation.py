@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import pytest
 
-from txlib.api.translations import Translation
-from txlib.tests.compat import patch
-from txlib.api.tests.utils import clean_registry, get_mock_response
+from txlib_too.api.translations import Translation
+from txlib_too.tests.compat import patch
+from txlib_too.api.tests.utils import clean_registry, get_mock_response
 
 
 @pytest.fixture(scope='module', autouse=True)
@@ -17,7 +17,7 @@ def auto_clean_registry():
 class TestTranslationModel():
     """Test the functionality of the Translation model."""
 
-    @patch('txlib.http.http_requests.requests.request')
+    @patch('txlib_too.http.http_requests.requests.request')
     def test_get_translation(self, mock_request):
         mock_request.return_value = get_mock_response(
             200, u'{"content": {"Master_key": "τεστ"}}'
@@ -26,7 +26,7 @@ class TestTranslationModel():
         assert obj.lang == 'el'
         assert obj.content == {'Master_key': u'τεστ'}
 
-    @patch('txlib.http.http_requests.requests.request')
+    @patch('txlib_too.http.http_requests.requests.request')
     def test_put_translation(self, mock_request):
         mock_request.return_value = get_mock_response(
             200, '{\

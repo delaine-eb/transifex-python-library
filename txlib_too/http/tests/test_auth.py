@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import pytest
 
-from txlib.http.auth import AuthInfo, BasicAuth, AnonymousAuth
+from txlib_too.http.auth import AuthInfo, BasicAuth, AnonymousAuth
 
 
 class TestAuthInfo():
@@ -41,7 +41,7 @@ class TestAuthInfo():
         auth_info = AuthInfo.get(username=username, password=password, headers=headers)
         assert isinstance(auth_info, BasicAuth)
         assert auth_info._headers == headers
-        
+
     def test_invalid_auth(self):
         with pytest.raises(ValueError):
             AuthInfo.get(username='username')

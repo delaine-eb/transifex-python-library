@@ -1,5 +1,5 @@
-from txlib.http.http_requests import HttpRequest
-from txlib.registry import registry
+from txlib_too.http.http_requests import HttpRequest
+from txlib_too.registry import registry
 
 
 class TestResponse():

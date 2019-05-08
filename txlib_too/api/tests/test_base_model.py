@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import pytest
 
-from txlib.api.base import BaseModel
-from txlib.api.tests.utils import clean_registry, get_mock_response
-from txlib.tests.compat import patch
+from txlib_too.api.base import BaseModel
+from txlib_too.api.tests.utils import clean_registry, get_mock_response
+from txlib_too.tests.compat import patch
 
 
 @pytest.fixture(scope='module', autouse=True)
@@ -44,7 +44,7 @@ class TestBaseModel():
         assert path.count('/') == 4
         assert path == correct_path
 
-    @patch('txlib.http.http_requests.requests.request')
+    @patch('txlib_too.http.http_requests.requests.request')
     def test_get_populates_object(self, mock_request):
         mock_request.return_value = get_mock_response(
             200, '{"id": 100, "slug": "slug"}'
@@ -62,7 +62,7 @@ class TestBaseModel():
         with pytest.raises(AttributeError):
             obj.invalid_field = ''
 
-    @patch('txlib.http.http_requests.requests.request')
+    @patch('txlib_too.http.http_requests.requests.request')
     def test_saving_existing_object_updates_it(self, mock_request):
         mock_request.return_value = get_mock_response(
             200, '{"id": 100, "slug": "slug"}'
@@ -82,7 +82,7 @@ class TestBaseModel():
         assert obj.description == 'description'
         assert mock_request.call_count == 2
 
-    @patch('txlib.http.http_requests.requests.request')
+    @patch('txlib_too.http.http_requests.requests.request')
     def test_saving_empty_object_does_not_make_request(self, mock_request):
         mock_request.return_value = get_mock_response(
             200, '{"id": 100, "slug": "slug"}'
@@ -95,7 +95,7 @@ class TestBaseModel():
         # to a request, because no attribute was actually set
         assert mock_request.call_count == 1
 
-    @patch('txlib.http.http_requests.requests.request')
+    @patch('txlib_too.http.http_requests.requests.request')
     def test_delete_existing_object(self, mock_request):
         mock_request.return_value = get_mock_response(
             200, '{"id": 100, "slug": "slug"}'
@@ -108,7 +108,7 @@ class TestBaseModel():
         obj.delete()
         assert mock_request.call_count == 2
 
-    @patch('txlib.http.http_requests.requests.request')
+    @patch('txlib_too.http.http_requests.requests.request')
     def test_saving_new_object_creates_it(self, mock_request):
         mock_request.return_value = get_mock_response(
             200, '{"id": 100, "description": "description"}'

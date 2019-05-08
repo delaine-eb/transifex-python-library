@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import pytest
 
-from txlib.api.resources import Resource
-from txlib.tests.compat import patch
-from txlib.api.tests.utils import clean_registry, get_mock_response
+from txlib_too.api.resources import Resource
+from txlib_too.tests.compat import patch
+from txlib_too.api.tests.utils import clean_registry, get_mock_response
 
 
 @pytest.fixture(scope='module', autouse=True)
@@ -17,7 +17,7 @@ def auto_clean_registry():
 class TestResourceModel():
     """Test the functionality of the Resource model."""
 
-    @patch('txlib.http.http_requests.requests.request')
+    @patch('txlib_too.http.http_requests.requests.request')
     def test_get_populates_object(self, mock_request):
         mock_request.return_value = get_mock_response(
             200, '{"id": 100, "slug": "resource1"}'
@@ -28,7 +28,7 @@ class TestResourceModel():
         assert obj.slug == 'resource1'
         assert '{}'.format(obj) == '[Resource slug=resource1]'
 
-    @patch('txlib.http.http_requests.requests.request')
+    @patch('txlib_too.http.http_requests.requests.request')
     def test_retrieve_content(self, mock_request):
         mock_request.return_value = get_mock_response(
             200, '{"id": 100, "slug": "resource1"}'
@@ -41,7 +41,7 @@ class TestResourceModel():
         content = resource.retrieve_content()
         assert content == 'string1\nstring2\nstring3'
 
-    @patch('txlib.http.http_requests.requests.request')
+    @patch('txlib_too.http.http_requests.requests.request')
     def test_save_content(self, mock_request):
         mock_request.return_value = get_mock_response(
             200, '{"content": "string1\\nstring2\\nstring3"}'
@@ -55,7 +55,7 @@ class TestResourceModel():
         assert resource.slug == 'resource1'
         assert resource.content == 'string1\\nstring2\\nstring3'
 
-    @patch('txlib.http.http_requests.requests.request')
+    @patch('txlib_too.http.http_requests.requests.request')
     def test_update_content(self, mock_request):
         """Test the update of a Resource when a 'content' parameter is set.
 
@@ -76,7 +76,7 @@ class TestResourceModel():
         )
         assert resource.content == 'only_one_string'
 
-    @patch('txlib.http.http_requests.requests.request')
+    @patch('txlib_too.http.http_requests.requests.request')
     def test_update(self, mock_request):
         """Test the update of a Resource when no 'content' parameter is set."""
         mock_request.return_value = get_mock_response(

@@ -9,16 +9,16 @@ jobs:
 
       - restore_cache:
           keys:
-            - txlib-{{ checksum "circle.yml" }}-{{ checksum "setup.py" }}
-            - txlib-{{ checksum "circle.yml" }}
-            - txlib-
+            - txlib_too-{{ checksum "circle.yml" }}-{{ checksum "setup.py" }}
+            - txlib_too-{{ checksum "circle.yml" }}
+            - txlib_too-
 
       - run: |
           mkdir -p test-results
           tox -- --cov-report xml --junitxml=test-results/junit.xml
 
       - save_cache:
-          key: txlib-{{ checksum "circle.yml" }}-{{ checksum "setup.py" }}
+          key: txlib_too-{{ checksum "circle.yml" }}-{{ checksum "setup.py" }}
           paths:
             - ~/.cache/pip
             - .tox

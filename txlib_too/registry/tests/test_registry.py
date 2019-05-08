@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import pytest
 
-from txlib.registry.registry import _Registry
-from txlib.http.auth import AnonymousAuth, BasicAuth
+from txlib_too.registry.registry import _Registry
+from txlib_too.http.auth import AnonymousAuth, BasicAuth
 
 
 class TestRegistry():

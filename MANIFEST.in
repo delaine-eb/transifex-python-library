@@ -1,2 +1,2 @@
 include versioneer.py
-include txlib/_version.py
+include txlib_too/_version.py

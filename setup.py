@@ -5,10 +5,10 @@ from setuptools import setup, find_packages
 
 
 setup(
-    version=versioneer.get_version(),
-    cmdclass=versioneer.get_cmdclass(),
+    version='0.1.3',
+    # cmdclass=versioneer.get_cmdclass(),
 
-    name="txlib",
+    name="txlib_too",
     author="Indifex Ltd.",
     author_email="info@indifex.com",
 
@@ -24,7 +24,6 @@ setup(
     long_description=open('README.rst').read(),
 
     classifiers=[
-        'Development Status :: 3 - Pre-Alpha',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
@@ -32,10 +31,10 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
     ],
-    keywords=(
+    keywords=[
         'translation',
         'localization',
         'internationalization',
-    ),
+    ],
     license='LGPL3',
 )

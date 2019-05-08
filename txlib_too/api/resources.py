@@ -6,7 +6,7 @@ Resource wrapper.
 
 import json
 
-from txlib.api.base import BaseModel
+from txlib_too.api.base import BaseModel
 
 
 class Resource(BaseModel):

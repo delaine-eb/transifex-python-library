@@ -21,9 +21,9 @@ Authentication works both with username/password or with an API token.
 
 .. code:: python
 
-    from txlib.http.auth import BasicAuth
-    from txlib.http.http_requests import HttpRequest
-    from txlib.registry import registry
+    from txlib_too.http.auth import BasicAuth
+    from txlib_too.http.http_requests import HttpRequest
+    from txlib_too.registry import registry
 
     credentials = BasicAuth(username='api', password='')
 
@@ -45,8 +45,8 @@ Get resource
 
 .. code:: python
 
-    from txlib.api.resources import Resource
-    from txlib.http.exceptions import NotFoundError, ServerError
+    from txlib_too.api.resources import Resource
+    from txlib_too.http.exceptions import NotFoundError, ServerError
 
     try:
         r = Resource.get(project_slug='project_slug', slug='resource_slug')
@@ -62,8 +62,8 @@ Create/update resource
 
 .. code:: python
 
-    from txlib.api.resources import Resource
-    from txlib.http.exceptions import NotFoundError, ServerError
+    from txlib_too.api.resources import Resource
+    from txlib_too.http.exceptions import NotFoundError, ServerError
 
     try:
         r = Resource.get(project_slug='project_slug', slug='resource_slug')
@@ -105,8 +105,8 @@ Get translation
 ^^^^^^^^^^^^^^^
 .. code:: python
 
-    from txlib.api.translations import Translation
-    from txlib.http.exceptions import NotFoundError, ServerError
+    from txlib_too.api.translations import Translation
+    from txlib_too.http.exceptions import NotFoundError, ServerError
 
     try:
         t = Translation.get(project_slug='project_slug', slug='resource_slug', lang='translation_language')
@@ -121,8 +121,8 @@ Create/update translation
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code:: python
 
-    from txlib.api.translations import Translation
-    from txlib.http.exceptions import NotFoundError, ServerError
+    from txlib_too.api.translations import Translation
+    from txlib_too.http.exceptions import NotFoundError, ServerError
 
     try:
         t = Translation(

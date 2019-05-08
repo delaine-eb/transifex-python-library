@@ -4,7 +4,7 @@
 Project wrapper.
 """
 
-from txlib.api.base import BaseModel
+from txlib_too.api.base import BaseModel
 
 
 class Project(BaseModel):

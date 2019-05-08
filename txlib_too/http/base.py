@@ -2,9 +2,9 @@
 
 from __future__ import with_statement
 from six.moves.urllib import parse as urlparse
-from txlib.http import exceptions
-from txlib.http.auth import AnonymousAuth
-from txlib.utils import _logger
+from txlib_too.http import exceptions
+from txlib_too.http.auth import AnonymousAuth
+from txlib_too.utils import _logger
 
 
 class BaseRequest(object):

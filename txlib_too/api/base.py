@@ -58,8 +58,8 @@ since the actual exception raised isn't shown anywhere.
 
 import json
 
-from txlib.utils import _logger
-from txlib.registry import registry
+from txlib_too.utils import _logger
+from txlib_too.registry import registry
 
 
 # Used for designating what type of attribute is missing
@@ -117,9 +117,9 @@ class BaseModel(object):
         Raises:
             AttributeError: if not all values for parameters in `url_fields`
                 are passed as kwargs
-            txlib.http.exceptions.NotFoundError: if the object with these
+            txlib_too.http.exceptions.NotFoundError: if the object with these
                 attributes is not found on the remote server
-            txlib.http.exceptions.ServerError subclass: depending on
+            txlib_too.http.exceptions.ServerError subclass: depending on
                 the particular server response
 
         Example:

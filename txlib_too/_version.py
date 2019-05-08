@@ -43,7 +43,7 @@ def get_config():
     cfg.style = ""
     cfg.tag_prefix = "v"
     cfg.parentdir_prefix = "None"
-    cfg.versionfile_source = "txlib/_version.py"
+    cfg.versionfile_source = "txlib_too/_version.py"
     cfg.verbose = False
     return cfg
 

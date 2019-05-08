@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-The txlib package.
+The txlib_too package.
 """
 
-__version__ = '0.1.0'
+__version__ = '0.1.3'
 __author__ = 'Indifex Ltd. <info@indifex.com>'
 __all__ = []
 

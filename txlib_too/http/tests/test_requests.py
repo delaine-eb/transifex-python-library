@@ -6,10 +6,10 @@ import json
 import responses
 import pytest
 
-from txlib.http.base import BaseRequest
-from txlib.http.http_requests import HttpRequest
-from txlib.http.auth import AnonymousAuth, BasicAuth
-from txlib.http.exceptions import UnknownError, RemoteServerError, \
+from txlib_too.http.base import BaseRequest
+from txlib_too.http.http_requests import HttpRequest
+from txlib_too.http.auth import AnonymousAuth, BasicAuth
+from txlib_too.http.exceptions import UnknownError, RemoteServerError, \
         AuthorizationError, ConflictError, NotFoundError, RequestError
 
 
@@ -108,15 +108,15 @@ class TestHttpRequest():
     """Test the HttpRequest class.
 
     These tests run against a local transifex installation. We assume
-    transifex listens in 127.0.0.1:8000 and there is a user `txlib` that has
-    the password `txlib`.
+    transifex listens in 127.0.0.1:8000 and there is a user `txlib_too` that has
+    the password `txlib_too`.
     """
 
     @pytest.fixture(autouse=True)
     def auto_init(self):
         self.hostname = 'http://127.0.0.1:8000'
-        self.username = 'txlib'
-        self.password = 'txlib'
+        self.username = 'txlib_too'
+        self.password = 'txlib_too'
         self.headers = {'header-1': 'value-1', 'header-2': 'value-2'}
         self.auth = BasicAuth(self.username, self.password)
         self.auth_with_headers = BasicAuth(self.username, self.password, self.headers)
@@ -180,12 +180,12 @@ class TestHttpRequest():
     def test_not_found(self):
         h = HttpRequest(self.hostname, auth=self.auth)
         responses.add(responses.GET,
-                      "{}/api/2/txlib/".format(self.hostname),
+                      "{}/api/2/txlib_too/".format(self.hostname),
                       status=404)
 
         # get a project that does not exist
         with pytest.raises(NotFoundError):
-            h.get('/api/2/txlib/')
+            h.get('/api/2/txlib_too/')
 
     def test_create(self):
         with responses.RequestsMock() as rsps:
@@ -198,7 +198,7 @@ class TestHttpRequest():
             rsps.add(responses.POST,
                      "{}/api/2/projects/".format(self.hostname),
                      status=409)
-            data = json.dumps(dict(slug='txlib', name='Txlib project'))
+            data = json.dumps(dict(slug='txlib_too', name='txlib_too project'))
             h.post(path, data=data)
             with pytest.raises(ConflictError):
                 h.post(path, data=data)
@@ -206,27 +206,27 @@ class TestHttpRequest():
     def test_update(self):
         with responses.RequestsMock() as rsps:
             rsps.add(responses.PUT,
-                     "{}/api/2/project/txlib/".format(self.hostname),
+                     "{}/api/2/project/txlib_too/".format(self.hostname),
                      status=400)
             rsps.add(responses.GET,
-                     "{}/api/2/project/txlib/?details".format(self.hostname),
+                     "{}/api/2/project/txlib_too/?details".format(self.hostname),
                      json={"anyone_submit": False}, match_querystring=True,
                      status=200)
             rsps.add(responses.PUT,
-                     "{}/api/2/project/txlib/".format(self.hostname),
+                     "{}/api/2/project/txlib_too/".format(self.hostname),
                      json={"anyone_submit": True},
                      status=200)
             rsps.add(responses.GET,
-                     "{}/api/2/project/txlib/?details".format(self.hostname),
+                     "{}/api/2/project/txlib_too/?details".format(self.hostname),
                      json={"anyone_submit": True}, match_querystring=True,
                      status=200)
             rsps.add(responses.DELETE,
-                     "{}/api/2/project/txlib/".format(self.hostname),
+                     "{}/api/2/project/txlib_too/".format(self.hostname),
                      status=200)
             h = HttpRequest(self.hostname, auth=self.auth)
             # Using a non-existent attribute for projects
             data = json.dumps(dict(name='New name', anyone_submitt=True))
-            path = '/api/2/project/txlib/'
+            path = '/api/2/project/txlib_too/'
             with pytest.raises(RequestError):
                 h.put(path, data)
 

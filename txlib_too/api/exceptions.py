@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-A collection of exceptions used in txlib.api.
+A collection of exceptions used in txlib_too.api.
 """
 
 

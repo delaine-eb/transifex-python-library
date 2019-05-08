@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from txlib.utils import _logger
+from txlib_too.utils import _logger
 
 
 class _Registry(object):

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 
-from txlib.api.base import BaseModel
+from txlib_too.api.base import BaseModel
 
 
 class Translation(BaseModel):

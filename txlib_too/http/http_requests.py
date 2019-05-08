@@ -2,9 +2,9 @@
 
 import json
 import requests
-from txlib.utils import _logger
-from txlib.http.base import BaseRequest
-from txlib.http.exceptions import NoResponseError
+from txlib_too.utils import _logger
+from txlib_too.http.base import BaseRequest
+from txlib_too.http.exceptions import NoResponseError
 
 
 class HttpRequest(BaseRequest):
